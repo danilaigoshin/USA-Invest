@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+spec:
+  rules:
+    - host: usa-invest-test.ru
+      http:
+        paths:
+          - path: /api/(.*)
+            backend:
+              serviceName: stockapi-srv
+              servicePort: 3000
+          - path: /signin-google?(.*)
+            backend:
+              serviceName: stockapi-srv
+              servicePort: 3000
+          - path: /signin-vkontakte?(.*)
+            backend:
+              serviceName: stockapi-srv
+              servicePort: 3000
+          - path: /signin-facebook?(.*)
+            backend:
+              serviceName: stockapi-srv
+              servicePort: 3000
+          - path: /?(.*)
+            backend:
+              serviceName: client-srv
+              servicePort: 3000

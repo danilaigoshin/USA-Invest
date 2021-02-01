@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stockapi-mssql-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stockapi-mssql
+  template:
+    metadata:
+      labels:
+        app: stockapi-mssql
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+        - name: stockapi-mssql
+          image: mcr.microsoft.com/mssql/server:2017-latest
+          env:
+            - name: ACCEPT_EULA
+              value: "Y"
+            - name: SA_PASSWORD
+              value: "Password123"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stockapi-mssql-srv
+spec:
+  selector:
+    app: stockapi-mssql
+  ports:
+    - protocol: TCP
+      port: 1433
+      targetPort: 1433
+  type: LoadBalancer

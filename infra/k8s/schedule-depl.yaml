@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: schedule-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: schedule
+  template:
+    metadata:
+      labels:
+        app: schedule
+    spec:
+      containers:
+        - name: schedule
+          image: devdanila/schedule
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: schedule-srv
+spec:
+  selector:
+    app: schedule
+  ports:
+    - name: schedule
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

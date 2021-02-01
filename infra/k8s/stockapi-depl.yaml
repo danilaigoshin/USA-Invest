@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stockapi-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stockapi
+  template:
+    metadata:
+      labels:
+        app: stockapi
+    spec:
+      containers:
+        - name: stockapi
+          image: devdanila/stockapi
+          env:
+            - name: SQLCONNECT
+              value: mssql-deployment
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stockapi-srv
+spec:
+  selector:
+    app: stockapi
+  ports:
+    - name: stockapi
+      protocol: TCP
+      port: 3000
+      targetPort: 80

@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: '/client'
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+    target-branch: develop
+  - package-ecosystem: nuget
+    directory: '/stockapi'
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+    target-branch: develop
+

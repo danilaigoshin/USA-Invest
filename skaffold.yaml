@@ -1,0 +1,27 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+      - ./infra/k8s-dev/*
+build:
+  local:
+    push: false
+  artifacts:
+    - image: devdanila/client
+      context: client
+      docker:
+        dockerfile: Dockerfile.dev
+      sync:
+        manual:
+          - src: '**/*.tsx'
+            dest: .
+    - image: devdanila/stockapi
+      context: stockapi
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.cs'
+            dest: .

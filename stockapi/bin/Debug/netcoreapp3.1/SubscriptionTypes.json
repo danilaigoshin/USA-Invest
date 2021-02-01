@@ -1,0 +1,17 @@
+﻿{
+  "basic": {
+    "duration": 1,
+    "cost": 300,
+    "description": "1 месяц подписки на Идеи UsaInvest"
+  },
+  "standart": {
+    "duration": 6,
+    "cost": 1500,
+    "description": "6 месяцев подписки на Идеи UsaInvest"
+  },
+  "premium": {
+    "duration": 12,
+    "cost": 2700,
+    "description": "12 месяцев подписки на Идеи UsaInvest"
+  }
+}

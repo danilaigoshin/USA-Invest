@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+Host: https://usa-invest.ru
+Sitemap: https://usa-invest.ru/sitemap.xml

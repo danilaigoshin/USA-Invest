@@ -1,0 +1,14 @@
+{
+  "name": "@stock-screener/schedule",
+  "version": "1.0.0",
+  "author": "Dev_danila <danigoshin@gmail.com>",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "axios-retry": "^3.1.9",
+    "node-cron": "^2.0.3"
+  }
+}
